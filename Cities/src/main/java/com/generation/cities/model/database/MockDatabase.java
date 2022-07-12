@@ -86,11 +86,34 @@ public class MockDatabase implements Database
 			res.addAll(c.bodies);
 		return res;
 	}
-
-	@Override
-	public List<Body> getBodies(String type)
+	
+	public List<Citizen> getCitizens()
 	{
-		return getBodies().stream().filter(b -> b.type.equalsIgnoreCase(type)).toList();
+		List<Citizen> res = new ArrayList<Citizen>();
+		for(Body b : getBodies())
+			res.addAll(b.citizens);
+		return res;
 	}
 
+	@Override
+	public List<Body> getBodies(String key)
+	{
+		return getBodies().stream().filter(b->(b.name + " "+b.ID+" "+b.type).toLowerCase().contains(key.toLowerCase())).toList();
+	}
+
+	@Override
+	public List<City> getCities(String key)
+	{
+	    return 	getCities().stream()
+		    	.filter(c -> (c.name + " "+c.ID).toLowerCase().contains(key.toLowerCase()))
+		    	.toList();
+	}
+
+	@Override
+	public List<Citizen> getCitizens(String key)
+	{
+	    return 	getCitizens().stream()
+		    	.filter(c -> (c.name + " "+c.surname + " "+c.ID).toLowerCase().contains(key.toLowerCase()))
+		    	.toList();
+	}
 }

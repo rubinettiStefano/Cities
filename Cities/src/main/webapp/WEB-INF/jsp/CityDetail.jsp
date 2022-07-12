@@ -11,7 +11,7 @@ import="java.util.List,com.generation.cities.model.entities.*"
 		<meta charset="ISO-8859-1">
 		<title>City Details</title>
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="city.css">
+		<link rel="stylesheet" href="/Cities/city.css">
 	</head>
 	<body>
 		<h1 class="w3-teal"> Details Page for: <b> <%=city.ID %> - <%=city.name %></b></h1>
@@ -59,7 +59,7 @@ import="java.util.List,com.generation.cities.model.entities.*"
 			<%
 				}
 			%>
+			<a href="Index">Back to home page</a>
 		</div>
-		
 	</body>
 </html>
