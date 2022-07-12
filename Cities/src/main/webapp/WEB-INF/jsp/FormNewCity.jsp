@@ -18,60 +18,31 @@
 		<h1 class="w3-teal"> City Manager 1.0 - Cities List </h1>
 		
 		<form action="Index" method="get">
-		
+			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
 			<input type="submit" class="w3-btn w3-teal" value="GO" />
 			<!--  primo input: un parametro nascosto che verrà inviato a Index. Nome parametro=cmd, valore=search -->
 			<input type="hidden" name="cmd" value="search" />
 			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
 			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
-			
-			
-			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
-				NEW CITY
-			</a>
+
 		</form>
 
-
+		<h2>New City Form</h2>
+		<form action="Index" method="get">
 		
-		<div class="w3-half">
-			<div class="w3-row tableheader">
-				<div class="w3-quarter">	
-					ID
-				</div>
-				<div class="w3-quarter">	
-					Name
-				</div>
-				<div class="w3-quarter">	
-					Width
-				</div>
-				<div class="w3-quarter">	
-					Height
-				</div>
-			</div>
-			<%
-				for(City c : cities)
-				{	 
-			%>
-					<div class="w3-row">
-						<div class="w3-quarter">
-							<a href="Index?cmd=city&id=<%=c.ID %>">
-								<%=c.ID %> 
-							</a> 	
-						</div>
-						<div class="w3-quarter">	
-							<%=c.name %>
-						</div>
-						<div class="w3-quarter">	
-							 <%=c.w %>
-						</div>
-						<div class="w3-quarter">	
-							<%=c.h %> 
-						</div>
-					</div>
-			<%
-				}
-			%>
-		</div>
+			<span>ID</span>
+			<input type="text" name="id" class="w3-input" />
+			<span>Name</span>
+			<input type="text" name="name" class="w3-input" />
+			<span>Width</span>
+			<input type="number" name="w" class="w3-input" />
+			<span>Height</span>
+			<input type="number" name=h class="w3-input" />
+			<input type="hidden" name="cmd" value="newcity" />
+			<br/>
+			<input type="submit" class="w3-btn w3-teal" value="SAVE" />
+			
+		</form>
+		
 	</body>
 </html>

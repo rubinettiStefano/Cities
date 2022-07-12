@@ -28,8 +28,6 @@ public class MockDatabase implements Database
 		Body b4 = new Body("BODY04", "Residential", "Casa Vuota Piccola",46,46,47,47);
 		city.addBody(b4);
 		
-
-		
 		cities.add(city);
 		cities.add(new City("CITY02","Vicenza",200,100));
 		cities.add(new City("CITY03","Roma",1000,1000));
@@ -98,7 +96,7 @@ public class MockDatabase implements Database
 	@Override
 	public List<Body> getBodies(String key)
 	{
-		return getBodies().stream().filter(b->(b.name + " "+b.ID+" "+b.type).toLowerCase().contains(key.toLowerCase())).toList();
+		return getBodies().stream().filter(b->(b.name + " "+b.ID+" "+b.type+" "+b.city.name).toLowerCase().contains(key.toLowerCase())).toList();
 	}
 
 	@Override
@@ -113,7 +111,13 @@ public class MockDatabase implements Database
 	public List<Citizen> getCitizens(String key)
 	{
 	    return 	getCitizens().stream()
-		    	.filter(c -> (c.name + " "+c.surname + " "+c.ID).toLowerCase().contains(key.toLowerCase()))
+		    	.filter(c -> (c.name + " "+c.surname + " "+c.ID+" "+c.body.city.name + " "+c.body.name).toLowerCase().contains(key.toLowerCase()))
 		    	.toList();
+	}
+
+	@Override
+	public void insertCity(City city)
+	{
+	    cities.add(city);
 	}
 }

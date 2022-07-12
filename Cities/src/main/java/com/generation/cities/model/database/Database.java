@@ -22,4 +22,6 @@ public interface Database
 	List<City> getCities(String key);
 
 	List<Citizen> getCitizens(String key);
+
+	void insertCity(City city);
 }

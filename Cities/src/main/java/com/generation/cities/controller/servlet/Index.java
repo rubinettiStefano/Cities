@@ -25,9 +25,10 @@ public class Index extends HttpServlet
     private static final String	PREFIX		 = "WEB-INF/jsp/";
     private static final String	MAINPAGE	 = "Main.jsp";
     private static final String	CITYDETAILPAGE	 = "CityDetail.jsp";
+    private static final String SEARCHRESULTSPAGE = "SearchResults.jsp";
+    private static final String	FORMNEWCITYPAGE	 = "FormNewCity.jsp";
     private static final String	ATTR_CITIES	 = "cities";
     private static final String	ATTR_CITY	 = "city";
-    private static final String SEARCHRESULTSPAGE = "SearchResults.jsp";
     private static final String ATTR_BODIES = "bodies";
     private static final String ATTR_CITIZENS = "citizens";
     
@@ -52,6 +53,19 @@ public class Index extends HttpServlet
 		request.getRequestDispatcher(PREFIX + CITYDETAILPAGE).forward(request, response);
 	    }
 	    break;
+	    case "newcity":
+	    {
+		String ID = request.getParameter("id");
+		String name = request.getParameter("name");
+		int w = Integer.parseInt(request.getParameter("w"));
+		int h = Integer.parseInt(request.getParameter("h"));
+		
+		City city = new City(ID,name,w,h);
+		database.insertCity(city);
+		request.setAttribute(ATTR_CITIES, database.getCities());
+		request.getRequestDispatcher(PREFIX + MAINPAGE).forward(request, response);
+	    }
+	    break;
 	    case "search":
 	    {
 		String key = request.getParameter("key");
@@ -64,6 +78,11 @@ public class Index extends HttpServlet
 		request.getRequestDispatcher(PREFIX+SEARCHRESULTSPAGE).forward(request,response);
 	    }
             break;
+	    case "formnewcity":
+	    {
+		request.getRequestDispatcher(PREFIX + FORMNEWCITYPAGE).forward(request, response);
+	    }
+	    break;
 	    default:
 	    {
 		request.setAttribute(ATTR_CITIES, database.getCities());
