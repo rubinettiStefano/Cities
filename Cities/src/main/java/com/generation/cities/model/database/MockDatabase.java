@@ -118,6 +118,17 @@ public class MockDatabase implements Database
 	@Override
 	public void insertCity(City city)
 	{
+	    if(city==null)
+		throw new RuntimeException("Cannot save null city");
+	    if(city.ID==null    || city.ID.isBlank())
+		throw new RuntimeException("Cannot save a city without an ID");
+	    if(city.name==null  || city.name.isBlank())	
+		throw new RuntimeException("Cannot save a city without a name");
+	    if(city.w<=0 || city.h<=0)	
+		throw new RuntimeException("Cannot save a city with w or h <=0");
+	    if(getCity(city.ID)!=null)	
+		throw new RuntimeException("Unique ID constriction FAILED");
+
 	    cities.add(city);
 	}
 }

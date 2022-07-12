@@ -4,7 +4,9 @@
 	    
 %>
 <%
-	List<City> cities = (List<City>) request.getAttribute("cities");
+	String error = (String)request.getAttribute("error");
+	if(error==null)
+	    error="";
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +26,7 @@
 			<input type="hidden" name="cmd" value="search" />
 			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
 			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-
+			
 		</form>
 
 		<h2>New City Form</h2>
@@ -41,6 +43,7 @@
 			<input type="hidden" name="cmd" value="newcity" />
 			<br/>
 			<input type="submit" class="w3-btn w3-teal" value="SAVE" />
+			<b style="color:red"><%=error %></b>
 			
 		</form>
 		

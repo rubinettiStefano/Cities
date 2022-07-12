@@ -1,7 +1,6 @@
 package com.generation.cities.controller.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,35 +10,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.generation.cities.model.database.Database;
 import com.generation.cities.model.database.MockDatabase;
-import com.generation.cities.model.entities.Body;
-import com.generation.cities.model.entities.Citizen;
-import com.generation.cities.model.entities.City;
 
 /**
  * Servlet implementation class Index
+ * io sono il CONTROLLER PRINCIPALE - DISPATCHER SERVLET, Servlet di SMISTAMENTO, FRONT CONTROLLER
+ * La porta di ingresso per tutto il sistema
  */
 @WebServlet("/Index")
 public class Index extends HttpServlet
 {
-    private static final long	serialVersionUID = 1L;
-    private static final String	PREFIX		 = "WEB-INF/jsp/";
-    private static final String	MAINPAGE	 = "Main.jsp";
-    private static final String	CITYDETAILPAGE	 = "CityDetail.jsp";
-    private static final String SEARCHRESULTSPAGE = "SearchResults.jsp";
-    private static final String	FORMNEWCITYPAGE	 = "FormNewCity.jsp";
-    private static final String	ATTR_CITIES	 = "cities";
-    private static final String	ATTR_CITY	 = "city";
-    private static final String ATTR_BODIES = "bodies";
-    private static final String ATTR_CITIZENS = "citizens";
+    public static final long   serialVersionUID	 = 1L;
+    public static final String PREFIX		 = "WEB-INF/jsp/";
+    public static final String MAINPAGE		 = "Main.jsp";
+    public static final String CITYDETAILPAGE	 = "CityDetail.jsp";
+    public static final String SEARCHRESULTSPAGE = "SearchResults.jsp";
+    public static final String FORMNEWCITYPAGE	 = "FormNewCity.jsp";
+    public static final String ATTR_CITIES	 = "cities";
+    public static final String ATTR_CITY	 = "city";
+    public static final String ATTR_BODIES	 = "bodies";
+    public static final String ATTR_CITIZENS	 = "citizens";
     
     Database database = new MockDatabase();
+    CityController cityController = new CityController(database);
     
     public Index()
     {
 	super();
     }
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet
+    (
+	    HttpServletRequest request, 
+	    HttpServletResponse response
+    )	 
+	    throws ServletException, IOException
     {
 	String cmd = request.getParameter("cmd");
 	if (cmd == null)
@@ -48,46 +52,20 @@ public class Index extends HttpServlet
 	switch (cmd)
 	{
 	    case "city":
-	    {
-		request.setAttribute(ATTR_CITY, database.getCity(request.getParameter("id")));
-		request.getRequestDispatcher(PREFIX + CITYDETAILPAGE).forward(request, response);
-	    }
+		cityController.getCity(request,response);
 	    break;
 	    case "newcity":
-	    {
-		String ID = request.getParameter("id");
-		String name = request.getParameter("name");
-		int w = Integer.parseInt(request.getParameter("w"));
-		int h = Integer.parseInt(request.getParameter("h"));
-		
-		City city = new City(ID,name,w,h);
-		database.insertCity(city);
-		request.setAttribute(ATTR_CITIES, database.getCities());
-		request.getRequestDispatcher(PREFIX + MAINPAGE).forward(request, response);
-	    }
+		cityController.newCity(request,response);
 	    break;
 	    case "search":
-	    {
-		String key = request.getParameter("key");
-		List<City> cities = database.getCities(key);
-		List<Body> bodies = database.getBodies(key);
-		List<Citizen> citizens = database.getCitizens(key);
-		request.setAttribute(ATTR_CITIES, cities);
-		request.setAttribute(ATTR_BODIES, bodies);
-		request.setAttribute(ATTR_CITIZENS, citizens);
-		request.getRequestDispatcher(PREFIX+SEARCHRESULTSPAGE).forward(request,response);
-	    }
+		cityController.search(request, response);
             break;
 	    case "formnewcity":
-	    {
-		request.getRequestDispatcher(PREFIX + FORMNEWCITYPAGE).forward(request, response);
-	    }
+		cityController.forNewCity(request,response);
 	    break;
 	    default:
-	    {
-		request.setAttribute(ATTR_CITIES, database.getCities());
-		request.getRequestDispatcher(PREFIX + MAINPAGE).forward(request, response);
-	    }
+		cityController.mainPage(request,response);
+	    
 	}
     }
     
