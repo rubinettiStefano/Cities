@@ -29,36 +29,40 @@
 			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
 				NEW CITY
 			</a>
+			<a href="Index?cmd=formnewbulding" class="w3-btn w3-teal">
+				NEW BODY
+			</a>
 		</form>
 
 		<h2>New City Form</h2>
 		<form action="Index" method="get">
 		
-			<span>ID</span>
+			ID
 			<input type="text" name="id" class="w3-input" />
-			<span>Name</span>
+			Type
+			<input type="text" name="type" class="w3-input" />
+			Name
 			<input type="text" name="name" class="w3-input" />
-			<span>Width</span>
-			<input type="number" name="w" class="w3-input" />
-			<span>Height</span>
-			<input type="number" name=h class="w3-input" />
-			<input type="hidden" name="cmd" value="newcity" />
+			Left
+			<input type="number" name="left" class="w3-input" />
+			Bottom
+			<input type="number" name="bottom" class="w3-input" />
+			Right
+			<input type="number" name="right" class="w3-input" />
+			Top
+			<input type="number" name="top" class="w3-input" />
+			ID of the parent City
+			<input type="text" name="cityid" class="w3-input" />
+			<input type="hidden" name="cmd" value="newbuilding" />
 			<br/>
 			<input type="submit" class="w3-btn w3-teal" value="SAVE" />
 			<b style="color:red"><%=error %></b>
 			
-			
 			<!-- 
-					A livello semantico questa form invia lo STATO di un oggetto di tipo CITY.
-					Il submit di questa form produce un URL con 5 parametri, quelli della FIRMA
-					FIRMA: 
-					Inseriti dall'utente, STATO dell'oggetto
-					-id 
-					-name 
-					-w 
-					-h
+					Firma:
+					-cmd = newbody
+					8 parametri inseriti dall'utente
 					
-					-cmd   definito da noi, serve alla SERVLET per decidere che case chiamare
 			 -->
 		</form>
 		

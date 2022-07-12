@@ -26,10 +26,19 @@
 			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
 			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
 			
+			<!-- 2 parametri: cmd, sempre con valore "search"
+							  key, con il valore inserito dall'utente
+		  		 Questa viene detta FIRMA DELLA FORM, l'insieme dei parametri inviati dalla FORM stessa
+		  	 -->
+			
 			
 			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
 				NEW CITY
 			</a>
+			<a href="Index?cmd=formnewbuilding" class="w3-btn w3-teal">
+				NEW BUILDING
+			</a>
+			
 		</form>
 
 

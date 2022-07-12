@@ -72,6 +72,7 @@ public class CityController
 
 	    City city = new City(ID,name,w,h);
 	    database.insertCity(city);
+	    			//"cities"	//la lista di città
 	    request.setAttribute(ATTR_CITIES, database.getCities());
 	    request.getRequestDispatcher(PREFIX + MAINPAGE).forward(request, response);
 	}
@@ -95,7 +96,7 @@ public class CityController
 	
     }
 
-    public void forNewCity(HttpServletRequest request, HttpServletResponse response) 
+    public void formNewCity(HttpServletRequest request, HttpServletResponse response) 
 	    throws ServletException, IOException
     {
 	request.getRequestDispatcher(PREFIX + FORMNEWCITYPAGE).forward(request, response);

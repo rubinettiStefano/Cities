@@ -49,6 +49,15 @@ public class MockDatabase implements Database
 				return c;
 		return null;
 	}
+	
+
+	public Body getBody(String ID)
+	{
+		for(Body b : getBodies())
+			if(b.ID.equals(ID))
+				return b;
+		return null;
+	}
 
 	@Override
 	public List<Citizen> getCitizen(String key)
@@ -130,5 +139,33 @@ public class MockDatabase implements Database
 		throw new RuntimeException("Unique ID constriction FAILED");
 
 	    cities.add(city);
+	}
+
+	@Override
+	public void insertBody(Body body)
+	{
+	    if(body==null)
+		throw new RuntimeException("Cannot save null body");
+	    if(body.ID==null    || body.ID.isBlank())
+		throw new RuntimeException("Cannot save a body without an ID");
+	    if((getBody(body.ID)!=null))
+		    throw new RuntimeException("Cannot save a body already existent");
+	    if(body.name==null  || body.name.isBlank())	
+		throw new RuntimeException("Cannot save a body without a name");
+	    if(body.type==null  || body.type.isBlank())	
+		throw new RuntimeException("Cannot save a body without a type");
+	    if(body.left<=0 || body.bottom<=0 || body.right<=0 || body.top<=0 )
+		throw new RuntimeException("Cannot save a body with negative coordinates");
+	    
+	    City city = getCity(body.cityID);
+	    if(city==null)
+		throw new RuntimeException("Unable to find city with ID:"+body.cityID);
+	    
+	    boolean res = city.addBody(body);
+	    if(!res)
+		throw new RuntimeException("Could not add body to city "+city.name+". Check coordinates");
+	    
+	    
+	    
 	}
 }

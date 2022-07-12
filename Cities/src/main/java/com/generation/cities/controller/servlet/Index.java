@@ -19,19 +19,31 @@ import com.generation.cities.model.database.MockDatabase;
 @WebServlet("/Index")
 public class Index extends HttpServlet
 {
-    public static final long   serialVersionUID	 = 1L;
-    public static final String PREFIX		 = "WEB-INF/jsp/";
-    public static final String MAINPAGE		 = "Main.jsp";
-    public static final String CITYDETAILPAGE	 = "CityDetail.jsp";
-    public static final String SEARCHRESULTSPAGE = "SearchResults.jsp";
-    public static final String FORMNEWCITYPAGE	 = "FormNewCity.jsp";
-    public static final String ATTR_CITIES	 = "cities";
-    public static final String ATTR_CITY	 = "city";
-    public static final String ATTR_BODIES	 = "bodies";
-    public static final String ATTR_CITIZENS	 = "citizens";
+    public static final long   serialVersionUID	 	= 1L;
+    public static final String PREFIX		 	= "WEB-INF/jsp/";
+    public static final String MAINPAGE		 	= "Main.jsp";
+    public static final String CITYDETAILPAGE	 	= "CityDetail.jsp";
+    public static final String SEARCHRESULTSPAGE	= "SearchResults.jsp";
+    public static final String FORMNEWCITYPAGE		= "FormNewCity.jsp";
+    public static final String FORMNEWBUILDINGPAGE	= "FormNewBuilding.jsp";
+    public static final String ATTR_CITIES		= "cities";
+    public static final String ATTR_CITY		= "city";
+    public static final String ATTR_BODIES		= "bodies";
+    public static final String ATTR_CITIZENS	 	= "citizens";
+    
+    // DEVO SCRIVERE UNA PAGINA WEB PER INSERIRE UN NUOVO BUILDING
+    // DUE NUOVI COMANDI: 	formnewbuilding, newbuilding
+    // UNA NUOVA CLASSE: 	BodyController, con due metodi
+    //					 	formNewBuilding() e insertBuilding()
+    // UNA NUOVA JSP   : 	formNewBuilding.jsp
+    //						se l'inserimento riesce, andare alla pagina 
+    //						della città del body
+    //						se fallisce tornare alla form
+
     
     Database database = new MockDatabase();
     CityController cityController = new CityController(database);
+    BodyController bodyController = new BodyController(database);
     
     public Index()
     {
@@ -61,7 +73,13 @@ public class Index extends HttpServlet
 		cityController.search(request, response);
             break;
 	    case "formnewcity":
-		cityController.forNewCity(request,response);
+		cityController.formNewCity(request,response);
+	    break;
+	    case "formnewbuilding":
+		bodyController.formNewBuilding(request,response);
+	    break;
+	    case "newbuilding":
+		bodyController.newBuilding(request,response);
 	    break;
 	    default:
 		cityController.mainPage(request,response);
