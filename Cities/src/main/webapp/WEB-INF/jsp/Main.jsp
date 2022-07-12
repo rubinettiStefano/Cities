@@ -36,8 +36,10 @@
 				{	 
 			%>
 					<div class="w3-row">
-						<div class="w3-quarter">	
-							<%=c.ID %> 
+						<div class="w3-quarter">
+							<a href="Index?cmd=city&id=<%=c.ID %>">
+								<%=c.ID %> 
+							</a> 	
 						</div>
 						<div class="w3-quarter">	
 							<%=c.name %>
