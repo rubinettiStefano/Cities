@@ -15,72 +15,12 @@
 		<link rel="stylesheet" href="/Cities/city.css">
 	</head>
 	<body>
-		<h1 class="w3-teal"> City Manager 1.0 - Cities List </h1>
 		
-		<form action="Index" method="get">
 		
-			<input type="submit" class="w3-btn w3-teal" value="GO" />
-			<!--  primo input: un parametro nascosto che verrà inviato a Index. Nome parametro=cmd, valore=search -->
-			<input type="hidden" name="cmd" value="search" />
-			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
-			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
-			
-			<!-- 2 parametri: cmd, sempre con valore "search"
-							  key, con il valore inserito dall'utente
-		  		 Questa viene detta FIRMA DELLA FORM, l'insieme dei parametri inviati dalla FORM stessa
-		  	 -->
-			
-			
-			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
-				NEW CITY
-			</a>
-			<a href="Index?cmd=formnewbuilding" class="w3-btn w3-teal">
-				NEW BUILDING
-			</a>
-			
-		</form>
+		<jsp:include page="Menu.jsp"></jsp:include>
 
-
+		<br/>
 		
-		<div class="w3-half">
-			<div class="w3-row tableheader">
-				<div class="w3-quarter">	
-					ID
-				</div>
-				<div class="w3-quarter">	
-					Name
-				</div>
-				<div class="w3-quarter">	
-					Width
-				</div>
-				<div class="w3-quarter">	
-					Height
-				</div>
-			</div>
-			<%
-				for(City c : cities)
-				{	 
-			%>
-					<div class="w3-row">
-						<div class="w3-quarter">
-							<a href="Index?cmd=city&id=<%=c.ID %>">
-								<%=c.ID %> 
-							</a> 	
-						</div>
-						<div class="w3-quarter">	
-							<%=c.name %>
-						</div>
-						<div class="w3-quarter">	
-							 <%=c.w %>
-						</div>
-						<div class="w3-quarter">	
-							<%=c.h %> 
-						</div>
-					</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="CityList.jsp"></jsp:include>
 	</body>
 </html>

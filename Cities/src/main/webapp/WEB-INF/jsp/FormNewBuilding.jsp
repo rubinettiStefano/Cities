@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="/Cities/city.css">
 	</head>
 	<body>
-		<h1 class="w3-teal"> City Manager 1.0 - Cities List </h1>
+		<jsp:include page="Menu.jsp"></jsp:include>
 		
 		<form action="Index" method="get">
 			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
@@ -26,12 +26,7 @@
 			<input type="hidden" name="cmd" value="search" />
 			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
 			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
-				NEW CITY
-			</a>
-			<a href="Index?cmd=formnewbulding" class="w3-btn w3-teal">
-				NEW BODY
-			</a>
+			
 		</form>
 
 		<h2>New City Form</h2>
@@ -55,7 +50,7 @@
 			<input type="text" name="cityid" class="w3-input" />
 			<input type="hidden" name="cmd" value="newbuilding" />
 			<br/>
-			<input type="submit" class="w3-btn w3-teal" value="SAVE" />
+			<input type="submit" class="w3-btn city-colors" value="SAVE" />
 			<b style="color:red"><%=error %></b>
 			
 			<!-- 

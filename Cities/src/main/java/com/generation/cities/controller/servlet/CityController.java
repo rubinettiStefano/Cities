@@ -74,16 +74,18 @@ public class CityController
 	    database.insertCity(city);
 	    			//"cities"	//la lista di città
 	    request.setAttribute(ATTR_CITIES, database.getCities());
-	    request.getRequestDispatcher(PREFIX + MAINPAGE).forward(request, response);
+	    request.getRequestDispatcher(PREFIX+FORMNEWCITYPAGE).forward(request, response);
 	}
 	catch(NumberFormatException e)
 	{
 	    request.setAttribute("error", "Expected width and height numeric");
+	    request.setAttribute(ATTR_CITIES, database.getCities());
 	    request.getRequestDispatcher(PREFIX+FORMNEWCITYPAGE).forward(request, response);
 	}
 	catch(RuntimeException e)
 	{
 	    request.setAttribute("error", e.getMessage());
+	    request.setAttribute(ATTR_CITIES, database.getCities());
 	    request.getRequestDispatcher(PREFIX+FORMNEWCITYPAGE).forward(request, response);
 	}
     }
@@ -99,6 +101,7 @@ public class CityController
     public void formNewCity(HttpServletRequest request, HttpServletResponse response) 
 	    throws ServletException, IOException
     {
+	request.setAttribute(ATTR_CITIES, database.getCities());
 	request.getRequestDispatcher(PREFIX + FORMNEWCITYPAGE).forward(request, response);
     }
     

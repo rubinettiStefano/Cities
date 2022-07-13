@@ -28,3 +28,35 @@ SPAN
 {
 	padding-left:10px;
 }
+
+A
+{
+	text-decoration:none;
+}
+
+A:hover
+{
+	font-weight:bold;
+}
+
+
+.tableheader
+{
+	font-size:120%;
+	padding-bottom:10px;
+	padding-top:px;
+	font-weight:bold;
+}
+
+.city-colors
+{
+	background-color:#f15a25;
+	color:white;
+	font-weight:bold;
+}
+
+.sectiontitle
+{
+	padding-left:20px;
+	width:90%;
+}

@@ -17,22 +17,7 @@
 		<link rel="stylesheet" href="/Cities/city.css">
 	</head>
 	<body>
-		<h1 class="w3-teal">City Manager 1.1 - Search Results </h1>
-		
-		<form action="Index" method="get">
-			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
-			<input type="submit" class="w3-btn w3-teal" value="GO" />
-			<!--  primo input: un parametro nascosto che verrà inviato a Index. Nome parametro=cmd, valore=search -->
-			<input type="hidden" name="cmd" value="search" />
-			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
-			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-			
-			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
-				NEW CITY
-			</a>
-
-		</form>
-
+		<jsp:include page="Menu.jsp"></jsp:include>
 
 		<h2>Cities found containing: <b><%=request.getParameter("key") %></b></h2>
 		<div >

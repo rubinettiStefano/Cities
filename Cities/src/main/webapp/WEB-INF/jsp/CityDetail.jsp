@@ -14,22 +14,8 @@ import="java.util.List,com.generation.cities.model.entities.*"
 		<link rel="stylesheet" href="/Cities/city.css">
 	</head>
 	<body>
-		<form action="Index" method="get">
-			<!--  terzo input: pulsante per avviare la ricerca, per INVIARE la request -->
-			<input type="submit" class="w3-btn w3-teal" value="GO" />
-			<!--  primo input: un parametro nascosto che verrà inviato a Index. Nome parametro=cmd, valore=search -->
-			<input type="hidden" name="cmd" value="search" />
-			<!--  secondo input: parametro VISIBILE inserito dall'utente, nome key, valore= quello che inserirà l'utente -->
-			<input type="text" class="w3-input" style="display:inline-block;width:80%" placeholder="search for..." name="key" />
-			
-			<a href="Index?cmd=formnewcity" class="w3-btn w3-teal">
-				NEW CITY
-			</a>
-
-		</form>
-	
-	
-		<h1 class="w3-teal"> Details Page for: <b> <%=city.ID %> - <%=city.name %></b></h1>
+		<jsp:include page="Menu.jsp"></jsp:include>
+		<h1 class="city-colors"> Details Page for: <b> <%=city.ID %> - <%=city.name %></b></h1>
 		<div>
 			<h2> General Information</h2>
 			ID: <b><%=city.ID %></b> <br/>
@@ -74,7 +60,7 @@ import="java.util.List,com.generation.cities.model.entities.*"
 			<%
 				}
 			%>
-			<a href="Index">Back to home page</a>
+			<a href="Index" class="w3-btn city-colors">Back to home page</a>
 		</div>
 	</body>
 </html>
