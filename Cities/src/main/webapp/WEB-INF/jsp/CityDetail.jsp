@@ -4,6 +4,9 @@ import="java.util.List,com.generation.cities.model.entities.*"
 %>
 <%
 	City city = (City) request.getAttribute("city");
+	String error = (String)request.getAttribute("error");
+	if(error==null)
+	    error="";
 %>
 <!DOCTYPE html>
 <html>
@@ -15,20 +18,20 @@ import="java.util.List,com.generation.cities.model.entities.*"
 	</head>
 	<body>
 		<jsp:include page="Menu.jsp"></jsp:include>
+		<br/>
 		<h1 class="city-colors"> Details Page for: <b> <%=city.ID %> - <%=city.name %></b></h1>
+		<b style="color:red;margin-left:20px;font-size:150%"><%=error %></b>
 		<div>
 			<h2> General Information</h2>
-			ID: <b><%=city.ID %></b> <br/>
-			Name: <b><%=city.name %></b> <br/>
-			Geometry: <b><%=city.w %> x <%=city.h %></b> blocks <br/>
-		
+			<div style="margin-left:10px;">
+				ID: <b><%=city.ID %></b> <br/>
+				Name: <b><%=city.name %></b> <br/>
+				Geometry: <b><%=city.w %> x <%=city.h %></b> blocks <br/>
+			</div>
 			<h2> Buildings</h2>
 			<div class="w3-row tableheader">
 				<div class="w3-quarter">	
-					ID - Name
-				</div>
-				<div class="w3-quarter">	
-					Type
+					ID - Name - Type
 				</div>
 				<div class="w3-quarter">	
 					Geometry
@@ -42,8 +45,7 @@ import="java.util.List,com.generation.cities.model.entities.*"
 				{
 			%>
 				<div class="w3-row">
-					<div class="w3-quarter"><b><%=b.ID%></b> - <%=b.name%></div>
-					<div class="w3-quarter"><%=b.type%></div>
+					<div class="w3-quarter"><b><%=b.ID%></b> - <%=b.name%> - <%=b.type%></div>
 					<div class="w3-quarter">(<%=b.left%>,<%=b.bottom%>)-(<%=b.right%>,<%=b.top%>)</div>
 					<div class="w3-quarter">
 						<%
@@ -54,6 +56,12 @@ import="java.util.List,com.generation.cities.model.entities.*"
 						<%
 							}
 						%>
+						&nbsp;
+					</div>
+					<div class="w3-quarter">
+						<a href="Index?cmd=deletebuilding&id=<%=b.ID%>&cityid=<%=b.cityID%>" class="w3-btn city-colors">
+						Delete
+						</a>
 					</div>
 				</div>
 				--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

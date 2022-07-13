@@ -26,4 +26,6 @@ public interface Database
 	void insertCity(City city);
 	
 	void insertBody(Body body);
+
+	void deleteBody(String iD, String cityID);
 }

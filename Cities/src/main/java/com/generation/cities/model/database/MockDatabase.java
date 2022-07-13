@@ -168,4 +168,15 @@ public class MockDatabase implements Database
 	    
 	    
 	}
+
+	@Override
+	public void deleteBody(String ID, String cityID)
+	{
+	    Body toDelete = getBody(ID);
+	    City city = getCity(cityID);
+	    if(!toDelete.citizens.isEmpty())
+		throw new RuntimeException("Body "+ toDelete.name + " has citizens, cannot delete");
+	    city.removeBody(ID);
+	    
+	}
 }

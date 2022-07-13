@@ -61,4 +61,22 @@ public class BodyController
 	    request.getRequestDispatcher(Index.PREFIX+Index.FORMNEWBUILDINGPAGE).forward(request, response);
 	}
     }
+
+    public void deleteBuilding(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException
+    {
+	String ID = request.getParameter("id");
+	String cityID = request.getParameter("cityid");
+	City city = database.getCity(cityID);
+	try
+	{
+	    database.deleteBody(ID,cityID);
+	}
+	catch(RuntimeException e)
+	{
+	    request.setAttribute("error", e.getMessage());
+	}
+	request.setAttribute(Index.ATTR_CITY,city); // alla pagina NON PASSO cityID
+	request.getRequestDispatcher(Index.PREFIX + Index.CITYDETAILPAGE).forward(request, response);
+    }
 }

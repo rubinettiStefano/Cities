@@ -81,6 +81,9 @@ public class Index extends HttpServlet
 	    case "newbuilding":
 		bodyController.newBuilding(request,response);
 	    break;
+	    case "deletebuilding":
+		bodyController.deleteBuilding(request,response);
+	    break;
 	    default:
 		cityController.mainPage(request,response);
 	    

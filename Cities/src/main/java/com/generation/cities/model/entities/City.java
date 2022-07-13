@@ -92,6 +92,11 @@ public class City extends Entity
 				.map(b -> b.getArea() < 10 ?  b.getArea() : 10).reduce(0, Integer::sum);
 	}
 
+	public boolean removeBody(String bodyID)
+	{
+	   return bodies.removeIf(b -> b.ID.equals(bodyID));
+	}
+	
 	@Override
 	public String toString()
 	{
