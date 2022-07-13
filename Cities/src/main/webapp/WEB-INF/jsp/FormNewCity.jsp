@@ -23,14 +23,14 @@
 				<h2 class="city-colors sectiontitle">New City Form</h2>
 				<form action="Index" method="get">
 				
-					<span>ID</span>
-					<input type="text" name="id" class="w3-input" />
-					<span>Name</span>
-					<input type="text" name="name" class="w3-input" />
-					<span>Width</span>
-					<input type="number" name="w" class="w3-input" />
-					<span>Height</span>
-					<input type="number" name=h class="w3-input" />
+					<span class="tableheader">ID</span>
+					<input type="text" name="id" class="w3-input" style="width:90%" />
+					<span class="tableheader">Name</span>
+					<input type="text" name="name" class="w3-input"style="width:90%" />
+					<span class="tableheader">Width</span>
+					<input type="number" name="w" class="w3-input" style="width:90%"/>
+					<span class="tableheader">Height</span>
+					<input type="number" name=h class="w3-input" style="width:90%"/>
 					<input type="hidden" name="cmd" value="newcity" />
 					<br/>
 					<input type="submit" class="w3-btn city-colors" value="SAVE" />

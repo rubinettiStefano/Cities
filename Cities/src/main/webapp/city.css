@@ -26,7 +26,7 @@ DIV
 
 SPAN
 {
-	padding-left:10px;
+	padding-left:20px;
 }
 
 A
@@ -40,13 +40,6 @@ A:hover
 }
 
 
-.tableheader
-{
-	font-size:120%;
-	padding-bottom:10px;
-	padding-top:px;
-	font-weight:bold;
-}
 
 .city-colors
 {

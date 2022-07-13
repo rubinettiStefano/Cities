@@ -19,7 +19,7 @@
 	<body>
 		<jsp:include page="Menu.jsp"></jsp:include>
 
-		<h2>Cities found containing: <b><%=request.getParameter("key") %></b></h2>
+		<h2 class="city-colors sectiontitle" style="margin-top:15px;padding-left:30px;">Cities found containing: <b><%=request.getParameter("key") %></b></h2>
 		<div >
 			<div class="w3-row tableheader">
 				<div class="w3-quarter">	
@@ -65,7 +65,7 @@
 		</div>
 		
 		
-		<h2>Bodies found containing: <b><%=request.getParameter("key") %></b></h2>
+		<h2 class="city-colors sectiontitle" style="margin-top:15px;padding-left:30px;">Bodies found containing: <b><%=request.getParameter("key") %></b></h2>
 		
 		<div>
 			<div class="w3-row tableheader">
@@ -101,7 +101,7 @@
 		</div>
 		
 		
-		<h2>Citizens found containing: <b><%=request.getParameter("key") %></b></h2>
+		<h2 class="city-colors sectiontitle" style="margin-top:15px;padding-left:30px;">Citizens found containing: <b><%=request.getParameter("key") %></b></h2>
 		
 		<div >
 			<div class="w3-row tableheader">

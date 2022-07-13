@@ -23,7 +23,7 @@
 					<a href="Index?cmd=formnewcity" class="w3-btn city-colors">
 						Insert New City
 					</a>
-					<a href="Index?cmd=formnewbulding" class="w3-btn city-colors">
+					<a href="Index?cmd=formnewbuilding" class="w3-btn city-colors">
 						Insert New Building
 					</a>
 					<a href="Index?cmd=formnewcitizen" class="w3-btn city-colors">
