@@ -31,6 +31,7 @@ public class Index extends HttpServlet
     public static final String ATTR_BODIES		= "bodies";
     public static final String ATTR_CITIZEN	 	= "citizen";
     public static final String ATTR_CITIZENS	 	= "citizens";
+    public static final String ATTR_BODY 		= "body";
     
     // DEVO SCRIVERE UNA PAGINA WEB PER INSERIRE UN NUOVO BUILDING
     // DUE NUOVI COMANDI: 	formnewbuilding, newbuilding

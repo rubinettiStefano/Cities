@@ -68,16 +68,18 @@ public class BodyController
     {
 	String ID = request.getParameter("id");
 	String cityID = request.getParameter("cityid");
-	City city = database.getCity(cityID);
 	try
 	{
 	    database.deleteBody(ID,cityID);
+	    request.setAttribute(Index.ATTR_CITY,database.getCity(cityID)); // alla pagina NON PASSO cityID
+	    request.getRequestDispatcher(Index.PREFIX + Index.CITYDETAILPAGE).forward(request, response);
 	}
 	catch(RuntimeException e)
 	{
 	    request.setAttribute("error", e.getMessage());
+	    request.setAttribute(Index.ATTR_CITY,database.getCity(cityID)); // alla pagina NON PASSO cityID
+	    request.getRequestDispatcher(Index.PREFIX + Index.CITYDETAILPAGE).forward(request, response);
 	}
-	request.setAttribute(Index.ATTR_CITY,city); // alla pagina NON PASSO cityID
-	request.getRequestDispatcher(Index.PREFIX + Index.CITYDETAILPAGE).forward(request, response);
+	
     }
 }
