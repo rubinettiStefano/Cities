@@ -13,7 +13,7 @@ public interface Database
 
 	City getCity(String ID);
 
-	List<Citizen> getCitizen(String key);
+	List<Citizen> getCitizenByKey(String key);
 
 	List<Body> getFreeHouses(String cityID, int minsize);
 	
@@ -28,4 +28,10 @@ public interface Database
 	void insertBody(Body body);
 
 	void deleteBody(String iD, String cityID);
+
+	void insertCitizen(Citizen citizen);
+
+	void deleteCitizen(String iD, String bodyID);
+
+	Citizen getCitizen(String ID);
 }

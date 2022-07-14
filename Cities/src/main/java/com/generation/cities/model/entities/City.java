@@ -102,6 +102,17 @@ public class City extends Entity
 	{
 		return "City [name=" + name + ", w=" + w + ", h=" + h + ", bodies=" + bodies + "]";
 	}
+
+	/**
+	 * imposta la lista da 0
+	 * @param newbodies
+	 */
+	public void setBodies(List<Body> newbodies)
+	{
+	    bodies.clear();    
+	    for(Body b:newbodies)
+		addBody(b);
+	}
 	
 	
 	

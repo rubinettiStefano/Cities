@@ -58,9 +58,20 @@ public class MockDatabase implements Database
 				return b;
 		return null;
 	}
+	
 
+	public Citizen getCitizen(String ID)
+	{
+	    for(Body b : getBodies())
+		for(Citizen c : b.citizens)
+		    if(c.ID.equals(ID))
+			return c;
+	    return null;
+	}
+	
+	
 	@Override
-	public List<Citizen> getCitizen(String key)
+	public List<Citizen> getCitizenByKey(String key)
 	{
 		List<Citizen> res = new ArrayList<Citizen>();
 		for(City city : getCities())
@@ -154,6 +165,8 @@ public class MockDatabase implements Database
 		throw new RuntimeException("Cannot save a body without a name");
 	    if(body.type==null  || body.type.isBlank())	
 		throw new RuntimeException("Cannot save a body without a type");
+	    if(body.address==null  || body.address.isBlank())	
+	 		throw new RuntimeException("Cannot save a body without an address");
 	    if(body.left<=0 || body.bottom<=0 || body.right<=0 || body.top<=0 )
 		throw new RuntimeException("Cannot save a body with negative coordinates");
 	    
@@ -165,8 +178,6 @@ public class MockDatabase implements Database
 	    if(!res)
 		throw new RuntimeException("Could not add body to city "+city.name+". Check coordinates");
 	    
-	    
-	    
 	}
 
 	@Override
@@ -177,6 +188,49 @@ public class MockDatabase implements Database
 	    if(!toDelete.citizens.isEmpty())
 		throw new RuntimeException("Body "+ toDelete.name + " has citizens, cannot delete");
 	    city.removeBody(ID);
+	}
+
+	@Override
+	public void insertCitizen(Citizen citizen)
+	{
+	    
+	    Body body = getBody(citizen.bodyID);
+	    if(body==null)
+		throw new RuntimeException("Cannot save a citizen without a valid body");
+	    if(citizen.ID==null    || citizen.ID.isBlank())
+		throw new RuntimeException("Cannot save a citizen without an ID");
+	    if((getCitizen(citizen.ID)!=null))
+		    throw new RuntimeException("Cannot save a citizen already existent");
+	    if(citizen.name==null  || citizen.name.isBlank())	
+		throw new RuntimeException("Cannot save a citizen without a name");
+	    if(citizen.surname==null  || citizen.surname.isBlank())	
+		throw new RuntimeException("Cannot save a citizen without a surname");
+	    if(citizen.profession==null  || citizen.profession.isBlank())	
+	 	throw new RuntimeException("Cannot save a citizen without a profession");
+	    if(citizen.dob==null  || citizen.dob.isBlank())	
+ 		throw new RuntimeException("Cannot save a citizen without a date of birth");
+	    if(citizen.gender==null  || citizen.gender.isBlank())	
+	 	throw new RuntimeException("Cannot save a citizen without a gender");
+	    if(citizen.salary < 0)
+		throw new RuntimeException("Cannot save a citizen with negative salary");
+	    
+	    boolean res = body.addCitizen(citizen);
+	    if(!res)
+		throw new RuntimeException("Could not add citizen to body "+body.name+". Check coordinates");
 	    
 	}
+
+	@Override
+	public void deleteCitizen(String ID, String bodyID)
+	{
+	    Citizen toDelete = getCitizen(ID);
+	    Body body = getBody(bodyID);
+	    if(toDelete==null)
+		throw new RuntimeException("Cannot delete a citizen that doesn't exist");
+	    
+	    body.removeCitizen(ID);
+	    
+	}
+	
+	
 }

@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.generation.cities.model.database.Database;
-import com.generation.cities.model.database.MockDatabase;
 
 /**
  * Servlet implementation class Index
@@ -23,12 +21,15 @@ public class Index extends HttpServlet
     public static final String PREFIX		 	= "WEB-INF/jsp/";
     public static final String MAINPAGE		 	= "Main.jsp";
     public static final String CITYDETAILPAGE	 	= "CityDetail.jsp";
+    public static final String CITIZENDETAILPAGE	= "CitizenDetail.jsp";
     public static final String SEARCHRESULTSPAGE	= "SearchResults.jsp";
     public static final String FORMNEWCITYPAGE		= "FormNewCity.jsp";
     public static final String FORMNEWBUILDINGPAGE	= "FormNewBuilding.jsp";
+    public static final String FORMNEWCITIZENPAGE	= "FormNewCitizen.jsp";
     public static final String ATTR_CITIES		= "cities";
     public static final String ATTR_CITY		= "city";
     public static final String ATTR_BODIES		= "bodies";
+    public static final String ATTR_CITIZEN	 	= "citizen";
     public static final String ATTR_CITIZENS	 	= "citizens";
     
     // DEVO SCRIVERE UNA PAGINA WEB PER INSERIRE UN NUOVO BUILDING
@@ -41,9 +42,9 @@ public class Index extends HttpServlet
     //						se fallisce tornare alla form
 
     
-    Database database = new MockDatabase();
-    CityController cityController = new CityController(database);
-    BodyController bodyController = new BodyController(database);
+    CityController cityController 	= (CityController) Context.getDependency("CityController");
+    BodyController bodyController 	= (BodyController) Context.getDependency("BodyController");
+    CitizenController citizenController = (CitizenController) Context.getDependency("CitizenController");
     
     public Index()
     {
@@ -66,14 +67,24 @@ public class Index extends HttpServlet
 	    case "city":
 		cityController.getCity(request,response);
 	    break;
+	    case "citizen":
+		citizenController.getCitizen(request,response);
+	    break;
 	    case "newcity":
 		cityController.newCity(request,response);
 	    break;
+	    case "newcitizen":
+		citizenController.newCitizen(request,response);
+	    break;
+	    
 	    case "search":
 		cityController.search(request, response);
             break;
 	    case "formnewcity":
 		cityController.formNewCity(request,response);
+	    break;
+	    case "formnewcitizen":
+		citizenController.formNewCitizen(request,response);
 	    break;
 	    case "formnewbuilding":
 		bodyController.formNewBuilding(request,response);
@@ -83,6 +94,8 @@ public class Index extends HttpServlet
 	    break;
 	    case "deletebuilding":
 		bodyController.deleteBuilding(request,response);
+	    case "deletecitizen":
+		citizenController.deleteCitizen(request,response);
 	    break;
 	    default:
 		cityController.mainPage(request,response);
@@ -90,9 +103,10 @@ public class Index extends HttpServlet
 	}
     }
     
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	    throws ServletException, IOException
     {
-	
+	doGet(request,response);
     }
     
 }

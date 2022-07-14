@@ -28,6 +28,8 @@
 			<input type="text" name="type" class="w3-input" style="width:90%"/>
 			<span class="tableheader">Name</span>
 			<input type="text" name="name" class="w3-input" style="width:90%"/>
+			<span class="tableheader">Address</span>
+			<input type="text" name="address" class="w3-input" style="width:90%"/>
 			<span class="tableheader">Left</span>
 			<input type="number" name="left" class="w3-input" style="width:90%"/>
 			<span class="tableheader">Bottom</span>

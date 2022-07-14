@@ -17,6 +17,7 @@ public class Body extends Entity
 	// VARCHAR(100)
 	public String type; // Rresidential, commercial, park...
 	public String name; //OPZIONALE
+	public String address;
 	public int left, bottom, right, top;  						// DICHIARAZIONI VARIABILI
 	Segment horizontal;
 	Segment vertical;
@@ -72,11 +73,12 @@ public class Body extends Entity
 		vertical = new Segment(bottom, top);
 	}
 	
-	public Body(String iD, String type, String name, int left, int bottom, int right, int top, String cityID) 
+	public Body(String iD, String type, String name,String address, int left, int bottom, int right, int top, String cityID) 
 	{
 		ID = iD;
 		this.type = type;
 		this.name = name;
+		this.address = address;
 		this.left = left;
 		this.bottom = bottom;
 		this.right = right;
@@ -142,7 +144,27 @@ public class Body extends Entity
 		
 		return true;	
 	}
+
+	public void removeCitizen(String ID)
+	{
+	    Citizen c = null;
+	    for(Citizen cit : citizens)
+		if(cit.ID.equals(ID))
+		    c = cit;
+	    
+	    if(c==null)
+		throw new RuntimeException("Cannot find the citizen with the ID: "+ID+" in the body "+this.ID);
+	    
+	    citizens.remove(c);
+	    c.body = null;
+	    c.bodyID = null;
+	}
 	
-	
+	public void setCitizens(List<Citizen> newcitizens)
+	{
+	    citizens.clear();    
+	    for(Citizen c:newcitizens)
+		addCitizen(c);
+	}
 }	
 

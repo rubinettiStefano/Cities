@@ -52,7 +52,9 @@ import="java.util.List,com.generation.cities.model.entities.*"
 							for(Citizen c : b.citizens)
 							{
 						%>
-								<%=c.ID%> <%=c.name%> <%=c.surname%>  <br/>
+								<a href="Index?cmd=citizen&id=<%=c.ID%>" class="w3-btn city-colors">
+									<%=c.ID%> <%=c.name%> <%=c.surname%>  
+								</a> <br/>
 						<%
 							}
 						%>
@@ -60,7 +62,7 @@ import="java.util.List,com.generation.cities.model.entities.*"
 					</div>
 					<div class="w3-quarter">
 						<a href="Index?cmd=deletebuilding&id=<%=b.ID%>&cityid=<%=b.cityID%>" class="w3-btn city-colors">
-						Delete
+							Delete
 						</a>
 					</div>
 				</div>

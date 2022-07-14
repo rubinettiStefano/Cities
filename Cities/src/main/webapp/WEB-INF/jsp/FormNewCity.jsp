@@ -21,7 +21,7 @@
 		<div class="w3-row" style="margin-top:20px">
 			<div class="w3-half">
 				<h2 class="city-colors sectiontitle">New City Form</h2>
-				<form action="Index" method="get">
+				<form action="Index" method="post">
 				
 					<span class="tableheader">ID</span>
 					<input type="text" name="id" class="w3-input" style="width:90%" />

@@ -31,6 +31,7 @@ public class BodyController
 	String ID 	= request.getParameter("id");
 	String name 	= request.getParameter("name");
 	String type 	= request.getParameter("type");
+	String address 	= request.getParameter("address");
 	String cityID 	= request.getParameter("cityid");
 	try
 	{
@@ -39,7 +40,7 @@ public class BodyController
 	    int top 	= Integer.parseInt(request.getParameter("top"));
 	    int right	= Integer.parseInt(request.getParameter("right"));
 	    
-	    Body body = new Body(ID,type,name,left,bottom,right,top,cityID);
+	    Body body = new Body(ID,type,name,address,left,bottom,right,top,cityID);
 	    database.insertBody(body); //Lui deve fare un sacco di controlli
 	    
 	    City city =database.getCity(cityID);
