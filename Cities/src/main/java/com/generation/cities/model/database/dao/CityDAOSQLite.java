@@ -40,7 +40,6 @@ public class CityDAOSQLite implements CityDAO
 	    // 1.3 - eseguire la query: lo statement è una factory di ResultSet
 	    ResultSet rows = readCmd.executeQuery(sql);
 	    // resultSet -> Insieme di righe, il RISULTATO di una query
-	    
 	    // 2 - Prendere OGNI riga, Convertirla in una CITY, aggiungerla a RES
 	    // DB SCANNER
 	    while (rows.next()) // while(reader.hasNextLine())
@@ -49,6 +48,8 @@ public class CityDAOSQLite implements CityDAO
 		City city = _rowToCity(rows); // City city = _rowToCity(row);
 		res.add(city); // res.add(city);
 	    }
+	    readCmd.close();
+
 	} catch (SQLException e)
 	{
 	    e.printStackTrace();
@@ -68,18 +69,29 @@ public class CityDAOSQLite implements CityDAO
     @Override
     public City getCity(String ID)
     {
+	
 	try
 	{
 	    Statement readCmd = connection.createStatement();
 	    String sql = "select * from City where id = '" + ID + "'";
 	    ResultSet row = readCmd.executeQuery(sql);
+	   
 	    if (row.next())
-		return _rowToCity(row);
+	    {
+		
+		City res= _rowToCity(row);
+		readCmd.close();
+		return res;
+	    }
 	    else
+	    {
+		readCmd.close();
 		return null;
+	    }
 	} catch (SQLException e)
 	{
 	    e.printStackTrace();
+	    
 	    return null;
 	}
     }
@@ -126,6 +138,7 @@ public class CityDAOSQLite implements CityDAO
 	    String sql = "Delete from City where id= '" + ID + "'";
 	    
 	    writeCmd.execute(sql);
+	    writeCmd.close();
 	} catch (SQLException e)
 	{
 	    e.printStackTrace();

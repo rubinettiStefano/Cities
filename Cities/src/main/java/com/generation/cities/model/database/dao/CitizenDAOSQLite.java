@@ -35,13 +35,14 @@ public class CitizenDAOSQLite implements CitizenDAO
 	    Statement readCmd = connection.createStatement();
 	    String sql = "select * from Citizen";
 	    ResultSet rows = readCmd.executeQuery(sql);
-	    
+	 
 	    while (rows.next()) // while(reader.hasNextLine())
 	    {
 		// facendo next ho già letto String row = reader.nextLine();
 		Citizen citizen = _rowToCitizen(rows); // City city = _rowToCity(row);
 		res.add(citizen); // res.add(city);
 	    }
+	    readCmd.close();
 	} catch (SQLException e)
 	{
 	    e.printStackTrace();
@@ -112,6 +113,7 @@ public class CitizenDAOSQLite implements CitizenDAO
 	    String sql = "Delete from Citizen where id= '" + ID + "'";
 	    
 	    writeCmd.execute(sql);
+	    writeCmd.close();
 	} 
 	catch (SQLException e)
 	{
@@ -129,10 +131,19 @@ public class CitizenDAOSQLite implements CitizenDAO
 	    Statement readCmd = connection.createStatement();
 	    String sql = "select * from Citizen where id = '" + ID + "'";
 	    ResultSet row = readCmd.executeQuery(sql);
+	    
 	    if (row.next())
-		return _rowToCitizen(row);
+	    {
+		Citizen c= _rowToCitizen(row);
+		readCmd.close();
+		return c;
+	    }
 	    else
+	    {
+		readCmd.close();
 		return null;
+	    }
+	   
 	} 
 	catch (SQLException e)
 	{
@@ -157,6 +168,7 @@ public class CitizenDAOSQLite implements CitizenDAO
 		Citizen citizen = _rowToCitizen(rows); // body body = _rowTobody(row);
 		res.add(citizen); // res.add(body);
 	    }
+	    readCmd.close();
 	} 
 	catch (SQLException e)
 	{

@@ -35,7 +35,7 @@ public class CityController
     {
 	String key = request.getParameter("key");
 	List<City> cities = database.getCitiesByKey(key);
-	List<Body> bodies = database.getBodiesByType(key);
+	List<Body> bodies = database.getBodiesByKey(key);
 	List<Citizen> citizens = database.getCitizensByKey(key);
 	request.setAttribute(ATTR_CITIES, cities);
 	request.setAttribute(ATTR_BODIES, bodies);

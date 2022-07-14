@@ -39,6 +39,7 @@ public class BodyDAOSQLite implements BodyDAO
 		Body body = _rowToBody(rows); // body body = _rowTobody(row);
 		res.add(body); // res.add(body);
 	    }
+	    readCmd.close();
 	} 
 	catch (SQLException e)
 	{
@@ -72,10 +73,18 @@ public class BodyDAOSQLite implements BodyDAO
 	    Statement readCmd = connection.createStatement();
 	    String sql = "select * from Body where id = '" + ID + "'";
 	    ResultSet row = readCmd.executeQuery(sql);
+	   
 	    if (row.next())
-		return _rowToBody(row);
+	    {
+		Body b= _rowToBody(row);
+		readCmd.close();
+		return b;
+	    }
 	    else
+	    {
+		readCmd.close();
 		return null;
+	    }
 	} 
 	catch (SQLException e)
 	{
@@ -131,6 +140,8 @@ public class BodyDAOSQLite implements BodyDAO
 	    String sql = "Delete from Body where id= '" + ID + "'";
 	    
 	    writeCmd.execute(sql);
+	    writeCmd.close();
+	    
 	} 
 	catch (SQLException e)
 	{
@@ -156,6 +167,7 @@ public class BodyDAOSQLite implements BodyDAO
 		Body body = _rowToBody(rows); // body body = _rowTobody(row);
 		res.add(body); // res.add(body);
 	    }
+	    readCmd.close();
 	} 
 	catch (SQLException e)
 	{
