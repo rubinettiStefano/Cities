@@ -50,7 +50,7 @@ public class CitizenController
 	    Citizen citizen = new Citizen(ID, name, surname, profession, dob, gender, salary, bodyID);
 	    database.insertCitizen(citizen); 
 	    
-	    request.setAttribute(Index.ATTR_CITIZEN,citizen); 
+	    request.setAttribute(Index.ATTR_CITIZEN,database.getCitizen(ID)); 
 	    request.getRequestDispatcher(Index.PREFIX + Index.CITIZENDETAILPAGE).forward(request, response);
 	
 	}

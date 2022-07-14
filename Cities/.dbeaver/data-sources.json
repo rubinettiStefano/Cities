@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-181fd4f5dc6-2634426bbcf6553f": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "city.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db",
+				"url": "jdbc:sqlite:C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
