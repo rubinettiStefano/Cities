@@ -10,18 +10,18 @@ import com.generation.cities.model.entities.City;
 public interface Database
 {
 	List<City> getCities();
-
+	
 	City getCity(String ID);
 
-	List<Citizen> getCitizenByKey(String key);
+	List<Body> getBodiesByKey(String key);
 
 	List<Body> getFreeHouses(String cityID, int minsize);
 	
-	List<Body> getBodies(String type);
+	List<Body> getBodiesByType(String type);
 
-	List<City> getCities(String key);
+	List<City> getCitiesByKey(String key);
 
-	List<Citizen> getCitizens(String key);
+	List<Citizen> getCitizensByKey(String key);
 
 	void insertCity(City city);
 	
@@ -34,4 +34,6 @@ public interface Database
 	void deleteCitizen(String iD, String bodyID);
 
 	Citizen getCitizen(String ID);
+	
+	void deleteCity(String ID);
 }

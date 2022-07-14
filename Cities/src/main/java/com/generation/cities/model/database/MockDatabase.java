@@ -71,15 +71,9 @@ public class MockDatabase implements Database
 	
 	
 	@Override
-	public List<Citizen> getCitizenByKey(String key)
+	public List<Body> getBodiesByKey(String key)
 	{
-		List<Citizen> res = new ArrayList<Citizen>();
-		for(City city : getCities())
-			for(Body b : city.bodies)
-				for(Citizen c : b.citizens)
-					if((c.name + c.surname).toLowerCase().contains(key.toLowerCase()))
-						res.add(c);
-		return res;
+		return null;
 	}
 
 	@Override
@@ -114,13 +108,13 @@ public class MockDatabase implements Database
 	}
 
 	@Override
-	public List<Body> getBodies(String key)
+	public List<Body> getBodiesByType(String key)
 	{
 		return getBodies().stream().filter(b->(b.name + " "+b.ID+" "+b.type+" "+b.city.name).toLowerCase().contains(key.toLowerCase())).toList();
 	}
 
 	@Override
-	public List<City> getCities(String key)
+	public List<City> getCitiesByKey(String key)
 	{
 	    return 	getCities().stream()
 		    	.filter(c -> (c.name + " "+c.ID).toLowerCase().contains(key.toLowerCase()))
@@ -128,7 +122,7 @@ public class MockDatabase implements Database
 	}
 
 	@Override
-	public List<Citizen> getCitizens(String key)
+	public List<Citizen> getCitizensByKey(String key)
 	{
 	    return 	getCitizens().stream()
 		    	.filter(c -> (c.name + " "+c.surname + " "+c.ID+" "+c.body.city.name + " "+c.body.name).toLowerCase().contains(key.toLowerCase()))
@@ -229,6 +223,13 @@ public class MockDatabase implements Database
 		throw new RuntimeException("Cannot delete a citizen that doesn't exist");
 	    
 	    body.removeCitizen(ID);
+	    
+	}
+
+	@Override
+	public void deleteCity(String ID)
+	{
+	    // TODO Auto-generated method stub
 	    
 	}
 	

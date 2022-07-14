@@ -34,9 +34,9 @@ public class CityController
 	    throws ServletException, IOException
     {
 	String key = request.getParameter("key");
-	List<City> cities = database.getCities(key);
-	List<Body> bodies = database.getBodies(key);
-	List<Citizen> citizens = database.getCitizens(key);
+	List<City> cities = database.getCitiesByKey(key);
+	List<Body> bodies = database.getBodiesByType(key);
+	List<Citizen> citizens = database.getCitizensByKey(key);
 	request.setAttribute(ATTR_CITIES, cities);
 	request.setAttribute(ATTR_BODIES, bodies);
 	request.setAttribute(ATTR_CITIZENS, citizens);
