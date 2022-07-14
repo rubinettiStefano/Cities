@@ -131,7 +131,7 @@ public class BasicDatabase implements Database
 	List<City> res = new ArrayList<City>();
 	
 	for(City c : getCities())
-	    if((c.ID + " "+ c.name).toLowerCase().contains(key))
+	    if((c.ID + " "+ c.name).toLowerCase().contains(key.toLowerCase()))
 		res.add(c);
 	
 	return res;
@@ -143,7 +143,7 @@ public class BasicDatabase implements Database
 	List<Body> res = new ArrayList<Body>();
 	
 	for(Body b : getBodies())
-	    if((b.name + " " + b.address + " " + b.type + " " + b.city.name).toLowerCase().contains(key))
+	    if((b.name + " " + b.address + " " + b.type + " " + b.city.name).toLowerCase().contains(key.toLowerCase()))
 		res.add(b);
 	
 	return res;
