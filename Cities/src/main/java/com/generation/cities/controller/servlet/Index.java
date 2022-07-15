@@ -119,6 +119,9 @@ public class Index extends HttpServlet
 		    case "login":
 		    	userController.login(request,response);
 		    break;
+		    case "logout":
+		    	userController.logout(request,response);
+		    break;
 		    default:
 		    	cityController.mainPage(request,response);
 		    

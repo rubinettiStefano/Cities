@@ -51,6 +51,13 @@ public class UserController
 		}
 		
 	}
+
+
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		request.getSession().setAttribute("loggedUser", null);
+		request.getRequestDispatcher(Index.PREFIX + Index.FORMLOGINPAGE).forward(request, response);
+	}
     
     
     
