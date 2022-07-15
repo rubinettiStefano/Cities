@@ -4,6 +4,17 @@ import="java.util.List,com.generation.cities.model.entities.*"
 %>
 <%
 	Citizen citizen = (Citizen) request.getAttribute("citizen");
+
+	if(citizen==null)
+	{
+	    out.println("Expected attribute named citizen of type Citizen. Got null!. <br />");
+	    out.println("Parameter data: <br />");
+	    for(String key:request.getParameterMap().keySet())
+			out.println(key+":"+request.getParameter(key)+"<br />");
+	    return;
+	}
+
+
 %>
 <!DOCTYPE html>
 <html>

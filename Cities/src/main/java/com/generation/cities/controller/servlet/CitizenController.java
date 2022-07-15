@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.generation.cities.model.database.Database;
 import com.generation.cities.model.entities.Citizen;
-import com.generation.cities.model.entities.City;
 
 public class CitizenController
 {

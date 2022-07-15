@@ -14,7 +14,7 @@ public class DatabaseFactory
     public static Database make(String dbname) throws SQLException, ClassNotFoundException
     {
 	Class.forName("org.sqlite.JDBC");
-	Connection connection = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+	Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db");
 	
 	return new BasicDatabase
 				(
