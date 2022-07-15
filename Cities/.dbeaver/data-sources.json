@@ -1,5 +1,7 @@
 {
-	"folders": {},
+	"folders": {
+		
+	},
 	"connections": {
 		"sqlite_jdbc-181fd4f5dc6-2634426bbcf6553f": {
 			"provider": "sqlite",
@@ -12,7 +14,9 @@
 				"url": "jdbc:sqlite:C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db",
 				"type": "dev",
 				"auth-model": "native",
-				"handlers": {}
+				"handlers": {
+					
+				}
 			}
 		}
 	},

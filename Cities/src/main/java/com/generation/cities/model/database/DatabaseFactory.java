@@ -7,21 +7,23 @@ import java.sql.SQLException;
 import com.generation.cities.model.database.dao.BodyDAOSQLite;
 import com.generation.cities.model.database.dao.CitizenDAOSQLite;
 import com.generation.cities.model.database.dao.CityDAOSQLite;
+import com.generation.cities.model.database.dao.UserDAOSQLite;
 
 
 public class DatabaseFactory
 {
     public static Database make(String dbname) throws SQLException, ClassNotFoundException
     {
-	Class.forName("org.sqlite.JDBC");
-	Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db");
-	
-	return new BasicDatabase
-				(
-					new CityDAOSQLite(connection),
-					new BodyDAOSQLite(connection),
-					new CitizenDAOSQLite(connection)
-				);
+		Class.forName("org.sqlite.JDBC");
+		Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db");
+		
+		return new BasicDatabase
+					(
+						new CityDAOSQLite(connection),
+						new BodyDAOSQLite(connection),
+						new CitizenDAOSQLite(connection),
+						new UserDAOSQLite(connection)
+					);
 	
     }
 }

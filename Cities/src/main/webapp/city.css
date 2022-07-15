@@ -1,55 +1,45 @@
 @charset "ISO-8859-1";
 
-H1
-{
-	margin:0px;
-	padding-left:10px;
+H1 {
+	margin: 0px;
+	padding-left: 10px;
 }
 
-H2
-{
-	margin:0px;
-	padding-left:10px;
+H2 {
+	margin: 0px;
+	padding-left: 10px;
 }
 
-DIV
-{
-	padding-left:10px;
-}
-.tableheader
-{
-	 font-size:120%;
-	 padding-bottom:10px;
-	 padding-top:10px;
-	 font-weight:bold;
+DIV {
+	padding-left: 10px;
 }
 
-SPAN
-{
-	padding-left:20px;
+.tableheader {
+	font-size: 120%;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	font-weight: bold;
 }
 
-A
-{
-	text-decoration:none;
+SPAN {
+	padding-left: 20px;
 }
 
-A:hover
-{
-	font-weight:bold;
+A {
+	text-decoration: none;
 }
 
-
-
-.city-colors
-{
-	background-color:#f15a25;
-	color:white;
-	font-weight:bold;
+A:hover {
+	font-weight: bold;
 }
 
-.sectiontitle
-{
-	padding-left:20px;
-	width:90%;
+.city-colors {
+	background-color: #f15a25;
+	color: white;
+	font-weight: bold;
+}
+
+.sectiontitle {
+	padding-left: 20px;
+	width: 90%;
 }

@@ -23,15 +23,13 @@ class SimpleUserDAOSQLiteTest
 	    dao = new UserDAOSQLite(connection);
 	} catch (SQLException e)
 	{
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	} catch (ClassNotFoundException e)
 	{
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
     }
-    
+    //QUESTi TESTs VALGONO SOLO PER I DATI CHE HO IO NEL MIO DB
     @Test
     void testGet()
     {

@@ -9,34 +9,34 @@ import com.generation.cities.model.database.DatabaseFactory;
 
 public class Context
 {
-    
-    private static List<Object> dependencies = new ArrayList<Object>();
-    
-    
-    static
-    {
-	try
+
+	private static List<Object> dependencies = new ArrayList<Object>();
+
+	static
 	{
-           Database database = DatabaseFactory.make("C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db");
-           dependencies.add(database);
-           dependencies.add(new CityController(database));
-           dependencies.add(new BodyController(database));
-           dependencies.add(new CitizenController(database));
+		try
+		{
+			Database database = DatabaseFactory
+					.make("C:\\Users\\rubin\\git\\Cities\\Cities\\src\\main\\webapp\\city.db");
+			dependencies.add(database);
+			dependencies.add(new CityController(database));
+			dependencies.add(new BodyController(database));
+			dependencies.add(new CitizenController(database));
+			dependencies.add(new UserController(database));
+		} catch (ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+			System.exit(-1); // UCCIDI TUTTO. TERMINA PURE IL SERVER, SPEGNI TOMCAT
+		}
 	}
-	catch(ClassNotFoundException | SQLException e )
+
+	public static Object getDependency(String typeName)
 	{
-	    e.printStackTrace();
-	    System.exit(-1); // UCCIDI TUTTO. TERMINA PURE IL SERVER, SPEGNI TOMCAT
+		for (Object o : dependencies)
+			if (o.getClass().getSimpleName().equals(typeName))
+				return o;
+
+		throw new RuntimeException("No object found for type " + typeName);
 	}
-    }
-    
-    public static Object getDependency(String typeName)
-    {
-	for(Object o:dependencies)
-	    if(o.getClass().getSimpleName().equals(typeName))
-		return o;
-	
-	throw new RuntimeException("No object found for type "+typeName);
-    }
-    
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.generation.cities.model.entities.Body;
 import com.generation.cities.model.entities.Citizen;
 import com.generation.cities.model.entities.City;
+import com.generation.cities.model.entities.User;
 
 
 public interface Database
@@ -36,4 +37,6 @@ public interface Database
 	Citizen getCitizen(String ID);
 	
 	void deleteCity(String ID);
+
+	User login(String email, String password);
 }

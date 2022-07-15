@@ -1,0 +1,8 @@
+{
+	"resources": {
+		"Scripts/Script.sql": {
+			"sql-editor-data-source-id": "sqlite_jdbc-181fd4f5dc6-2634426bbcf6553f",
+			"default-datasource": "sqlite_jdbc-181fd4f5dc6-2634426bbcf6553f"
+		}
+	}
+}
